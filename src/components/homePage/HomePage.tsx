@@ -6,17 +6,10 @@ interface Projects {
 
 interface HomePageProps {
   handleClick: (url: string) => void;
+  projects: Projects[];
 }
 
-export default function HomePage({ handleClick }: HomePageProps) {
-  const projects: Projects[] = [
-    {
-      title: "Todo App",
-      desc: "This app allows you to create an basic todo list",
-      url: "/todoApp",
-    },
-  ];
-
+export default function HomePage({ handleClick, projects }: HomePageProps) {
   return (
     <div className="p-4 min-h-dvh max-w-[1200px] mx-auto">
       <h3 className="text-center ">
@@ -26,7 +19,10 @@ export default function HomePage({ handleClick }: HomePageProps) {
         <h4 className="font-bold text-xl">Projects</h4>
         <div className="my-4 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project, index) => (
-            <div className=" p-4 shadow-lg flex flex-col gap-3" key={index}>
+            <div
+              className=" p-4 shadow-lg flex flex-col justify-between gap-3"
+              key={index}
+            >
               <h3 className="font-bold text-lg">{project.title}</h3>
               <p>{project.desc}</p>
               <button
