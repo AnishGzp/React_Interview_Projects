@@ -121,14 +121,18 @@ export default function TodoApp({ handleClick }: TodoAppProps) {
             <div className="flex items-center gap-4" key={index}>
               <input
                 type="checkbox"
+                id={`todoCheck-${index}`}
                 checked={todo.completed}
                 onChange={() =>
                   dispatch({ type: "TOGGLE_TODO", payload: index })
                 }
               />
-              <span className={todo.completed ? "line-through" : ""}>
+              <label
+                htmlFor={`todoCheck-${index}`}
+                className={todo.completed ? "line-through" : ""}
+              >
                 {todo.data} - {todo.date} {todo.time}
-              </span>
+              </label>
               <button
                 className="bg-red-500 px-3 py-1 rounded-[8px] text-white"
                 onClick={() =>
